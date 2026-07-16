@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aditya Kumar Jha | Student Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+background:#09111f;
+color:white;
+overflow-x:hidden;
+
+}
+
+.sidebar{
+
+position:fixed;
+left:0;
+top:0;
+width:260px;
+height:100vh;
+background:linear-gradient(180deg,#12203d,#08111f);
+padding:30px 20px;
+
+}
+
+.logo{
+
+font-size:26px;
+font-weight:700;
+margin-bottom:40px;
+text-align:center;
+
+}
+
+.logo span{
+
+color:#45b3ff;
+
+}
+
+.menu{
+
+list-style:none;
+
+}
+
+.menu li{
+
+padding:15px;
+margin-bottom:12px;
+border-radius:12px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.menu li:hover{
+
+background:#1e3b73;
+
+}
+
+.main{
+
+margin-left:260px;
+padding:30px;
+
+}
+
+.top{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.top h1{
+
+font-size:34px;
+
+}
+
+.top p{
+
+color:#9fb6d5;
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:35px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.05);
+
+border:1px solid rgba(255,255,255,.08);
+
+backdrop-filter:blur(10px);
+
+border-radius:20px;
+
+padding:25px;
+
+transition:.4s;
+
+box-shadow:0 10px 30px rgba(0,0,0,.4);
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card h2{
+
+font-size:16px;
+
+color:#9fb6d5;
+
+}
+
+.card h1{
+
+margin-top:10px;
+font-size:38px;
+
+}
+
+.blue{
+
+color:#42b9ff;
+
+}
+
+.green{
+
+color:#53ff98;
+
+}
+
+.orange{
+
+color:#ffc857;
+
+}
+
+.red{
+
+color:#ff6565;
+
+}
+
+.section{
+
+margin-top:40px;
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:20px;
+
+}
+
+.chartBox{
+
+background:rgba(255,255,255,.05);
+
+padding:25px;
+
+border-radius:20px;
+
+}
+
+.profile{
+
+background:rgba(255,255,255,.05);
+
+padding:25px;
+
+border-radius:20px;
+
+text-align:center;
+
+}
+
+.avatar{
+
+width:120px;
+
+height:120px;
+
+margin:auto;
+
+border-radius:50%;
+
+background:linear-gradient(135deg,#3f7bff,#00d4ff);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:60px;
+
+}
+
+.profile h2{
+
+margin-top:15px;
+
+}
+
+.profile p{
+
+color:#a3b9d7;
+
+margin-top:10px;
+
+}
+
+.progressSection{
+
+margin-top:35px;
+
+background:rgba(255,255,255,.05);
+
+padding:25px;
+
+border-radius:20px;
+
+}
+
+.subject{
+
+margin-top:20px;
+
+}
+
+.subject span{
+
+display:flex;
+
+justify-content:space-between;
+
+}
+
+.bar{
+
+margin-top:8px;
+
+height:10px;
+
+background:#263650;
+
+border-radius:50px;
+
+overflow:hidden;
+
+}
+
+.fill{
+
+height:10px;
+
+border-radius:50px;
+
+background:linear-gradient(90deg,#3d8bff,#00d4ff);
+
+animation:grow 2s;
+
+}
+
+@keyframes grow{
+
+from{width:0;}
+
+}
+@media(max-width:1000px){
+
+.sidebar{
+
+position:relative;
+width:100%;
+height:auto;
+
+}
+
+.main{
+
+margin-left:0;
+
+}
+
+.section{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">
+
+🎓 <span>Student</span>
+
+</div>
+
+<ul class="menu">
+
+<li>🏠 Dashboard</li>
+
+<li>📚 Academics</li>
+
+<li>📊 Performance</li>
+
+<li>🏆 Achievements</li>
+
+<li>🎯 Goals</li>
+
+<li>📞 Contact</li>
+
+</ul>
+
+</div>
+
+<div class="main">
+
+<div class="top">
+
+<div>
+
+<h1>Welcome, Aditya 👋</h1>
+
+<p>Salwan Boys Sr. Sec. School • Class IX</p>
+
+</div>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>Overall Percentage</h2>
+
+<h1 class="green">90.43%</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Achievements</h2>
+
+<h1 class="orange">4</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Subjects</h2>
+
+<h1 class="blue">7</h1>
+
+</div>
+
+<div class="card">
+
+<h2>Status</h2>
+
+<h1 class="green">Excellent</h1>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<div class="chartBox">
+
+<h2>Academic Performance</h2>
+
+<br>
+
+<canvas id="marksChart"></canvas>
+
+</div>
+
+<div class="profile">
+
+<div class="avatar">
+
+🎓
+
+</div>
+
+<h2>Aditya Kumar Jha</h2>
+
+<p>Student of Salwan Boys Sr. Sec. School</p>
+
+<br>
+
+<h3>Overall Percentage</h3>
+
+<h1 class="green">90.43%</h1>
+
+</div>
+
+</div>
+
+<div class="progressSection">
+
+<h2>Subject Wise Marks</h2>
+
+<div class="subject">
+
+<span>
+
+<p>English</p>
+
+<p>91</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:91%"></div>
+
+</div>
+
+</div>
+
+<div class="subject">
+
+<span>
+
+<p>Hindi</p>
+
+<p>97</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:97%"></div>
+
+</div>
+
+</div>
+
+<div class="subject">
+
+<span>
+
+<p>Mathematics</p>
+
+<p>60</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:60%"></div>
+
+</div>
+
+</div>
+
+<div class="subject">
+
+<span>
+
+<p>Science</p>
+
+<p>96</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:96%"></div>
+
+</div>
+
+</div><div class="subject">
+
+<span>
+
+<p>Drawing</p>
+
+<p>100</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:100%"></div>
+
+</div>
+
+</div>
+
+<div class="subject">
+
+<span>
+
+<p>Social Science</p>
+
+<p>89</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:89%"></div>
+
+</div>
+
+</div>
+
+<div class="subject">
+
+<span>
+
+<p>Computer</p>
+
+<p>100</p>
+
+</span>
+
+<div class="bar">
+
+<div class="fill" style="width:100%"></div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="progressSection">
+
+<h2>🏆 Achievements</h2>
+
+<br>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>🥇 Best Student of the Year</h2>
+
+<p>Recognized for outstanding academic performance and discipline.</p>
+
+</div>
+
+<div class="card">
+
+<h2>📘 First Prize in GK Quiz</h2>
+
+<p>Won first position in the General Knowledge competition.</p>
+
+</div>
+
+<div class="card">
+
+<h2>🏏 Winner Captain Trophy</h2>
+
+<p>Led the cricket team to victory as captain.</p>
+
+</div>
+
+<div class="card">
+
+<h2>➗ First Prize in Maths Quiz</h2>
+
+<p>Secured first place in the Mathematics Quiz competition.</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="progressSection">
+
+<h2>🎯 Goals</h2>
+
+<ul style="margin-top:20px;line-height:2">
+
+<li>📚 Score above 95% in Class IX.</li>
+
+<li>🏆 Continue winning academic competitions.</li>
+
+<li>🏏 Represent the school in cricket tournaments.</li>
+
+<li>💻 Learn Web Development and Programming.</li>
+
+</ul>
+
+</div>
+
+<footer style="margin-top:40px;text-align:center;color:#9fb6d5;padding:20px;">
+
+© 2026 Aditya Kumar Jha • Student Performance Dashboard
+
+</footer>
+
+<script>
+
+const ctx=document.getElementById('marksChart');
+
+new Chart(ctx,{
+
+type:'bar',
+
+data:{
+
+labels:['English','Hindi','Maths','Science','Drawing','SST','Computer'],
+
+datasets:[{
+
+label:'Marks',
+
+data:[91,97,60,96,100,89,100],
+
+borderWidth:1
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+labels:{
+
+color:'white'
+
+}
+
+}
+
+},
+
+scales:{
+
+x:{
+
+ticks:{
+
+color:'white'
+
+},
+
+grid:{
+
+color:'#2a3d5d'
+
+}
+
+},
+
+y:{
+
+beginAtZero:true,
+
+max:100,
+
+ticks:{
+
+color:'white'
+
+},
+
+grid:{
+
+color:'#2a3d5d'
+
+}
+
+}
+
+}
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
